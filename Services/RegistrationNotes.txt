@@ -1,0 +1,4 @@
+DI registration note:
+Add the following before builder.Services.AddControllersWithViews() in Program.cs:
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<AcxiomCRM.Services.AuditService>();

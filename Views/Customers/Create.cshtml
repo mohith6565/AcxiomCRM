@@ -1,0 +1,13 @@
+@model Customer
+<h2>New Customer</h2><p class="text-muted">Fields marked required must be completed.</p>
+<form asp-action="Create" method="post" class="card border-0 shadow-sm p-4"><div asp-validation-summary="ModelOnly" class="text-danger"></div><div class="row g-3">
+<div class="col-md-6"><label asp-for="CustomerCode" class="form-label"></label><input asp-for="CustomerCode" class="form-control"/><span asp-validation-for="CustomerCode" class="text-danger"></span></div>
+<div class="col-md-6"><label asp-for="CustomerName" class="form-label"></label><input asp-for="CustomerName" class="form-control"/><span asp-validation-for="CustomerName" class="text-danger"></span></div>
+<div class="col-md-6"><label asp-for="Email" class="form-label"></label><input asp-for="Email" class="form-control"/><span asp-validation-for="Email" class="text-danger"></span></div>
+<div class="col-md-6"><label asp-for="Phone" class="form-label"></label><input asp-for="Phone" class="form-control"/><span asp-validation-for="Phone" class="text-danger"></span></div>
+<div class="col-md-6"><label asp-for="Company" class="form-label"></label><input asp-for="Company" class="form-control"/></div>
+<div class="col-md-6"><label asp-for="Address" class="form-label"></label><input asp-for="Address" class="form-control"/></div>
+<div class="col-md-6"><label asp-for="City" class="form-label"></label><input asp-for="City" class="form-control"/></div>
+<div class="col-md-6"><label asp-for="State" class="form-label"></label><input asp-for="State" class="form-control"/></div>
+</div><div class="mt-4"><button class="btn btn-gold">Save Customer</button> <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a></div></form>
+@section Scripts {<partial name="_ValidationScriptsPartial" />}

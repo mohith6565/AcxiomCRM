@@ -1,0 +1,3 @@
+@model IEnumerable<Opportunity>
+<div class="d-flex justify-content-between mb-3"><h2>Opportunities</h2><a asp-action="Create" class="btn btn-gold">+ New Opportunity</a></div>
+<div class="card border-0 shadow-sm table-responsive"><table class="table table-hover mb-0"><thead><tr><th>Opportunity</th><th>Customer</th><th>Stage</th><th>Amount</th><th>Probability</th><th>Expected Close</th></tr></thead><tbody>@foreach(var x in Model){<tr><td>@x.OpportunityName</td><td>@x.Customer?.CustomerName</td><td>@x.Stage</td><td>@x.Amount.ToString("C")</td><td>@x.Probability%</td><td>@x.ExpectedCloseDate.ToString("yyyy-MM-dd")</td></tr>}</tbody></table></div>

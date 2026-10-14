@@ -1,0 +1,13 @@
+@using System.Text.Json
+<h2 class="mb-1">Dashboard</h2><p class="text-muted">Your sales overview at a glance.</p>
+<div class="row g-3 my-2">
+<div class="col-md-3"><div class="metric"><span>Total Customers</span><strong>@ViewBag.Customers</strong></div></div>
+<div class="col-md-3"><div class="metric"><span>Open Leads</span><strong>@ViewBag.OpenLeads</strong></div></div>
+<div class="col-md-3"><div class="metric"><span>Open Opportunities</span><strong>@ViewBag.OpenOpportunities</strong></div></div>
+<div class="col-md-3"><div class="metric"><span>Pipeline Value</span><strong>@(((decimal)ViewBag.PipelineValue).ToString("C0"))</strong></div></div>
+</div>
+<div class="card border-0 shadow-sm mt-4"><div class="card-body"><h5>Opportunity Pipeline</h5><canvas id="pipelineChart" height="100"></canvas></div></div>
+@section Scripts {<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script>
+const stageData = @Html.Raw(JsonSerializer.Serialize(ViewBag.StageData));
+new Chart(document.getElementById('pipelineChart'), {type:'bar',data:{labels:stageData.map(x=>x.stage),datasets:[{label:'Opportunities',data:stageData.map(x=>x.count)}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{precision:0}}}}});
+</script>}
